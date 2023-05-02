@@ -77,22 +77,22 @@ weightChart.value  = new Chart(weightChartEl.value, {
 </script>
 
 <template>
- <main>
+ <main class="p-3 rounded-4">
   <h1>Weight Tracker</h1>
   <div class="current">
-    <span>{{currentWeight.weight}}</span>
+    <span class="lead fw-bold fs-3">{{currentWeight.weight}}</span>
     <div>
-      <small>cur weight</small>
+      <small class="text-muted mb-2 d-block">current weight</small>
     </div>      
   </div>
 <!-- form -->
-  <form @submit.prevent="addWeight">
+  <form @submit.prevent="addWeight" class="d-flex gap-1 mx-auto justify-content-center pb-4">
 <input type="number" name="" id="" step="0.1" v-model="weightInput">
 <input type="submit" value="Add weight">
   </form>
 
 <!-- chart section-->
-  <div v-if="weights && weights.length > 0">
+  <div class="pb-4" v-if="weights && weights.length > 0">
 <h2>last 7 days</h2>
 <!-- canvas -->
 <div class="canvas-box">
@@ -100,11 +100,11 @@ weightChart.value  = new Chart(weightChartEl.value, {
 </div>
 
 <!-- weight history -->
-<div class="weight-history">
+<div class="weight-history mt-4">
   <h2>Weight history</h2>
-  <ul>
-    <li v-for="weight in weights" :key="weight.id">
-    <span>{{ weight.weight }}kg </span>
+  <ul class="list-unstyled">
+    <li class="pb-2 border-bottom border-1 " v-for="weight in weights" :key="weight.id">
+    <span class="lead">{{ weight.weight }}kg </span>
     <small>{{ new Date(weight.date).toLocaleDateString("en-US", options) }}</small>
     </li>
   </ul>
