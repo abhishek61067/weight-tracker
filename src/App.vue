@@ -1,7 +1,7 @@
 
  <!-- we are using composition api here, so setup attribute is needed -->
 <script setup>
-  import {shallowRef, ref, computed, watch, nextTick} from "vue";
+  import {shallowRef, ref, computed, watch, nextTick, onMounted} from "vue";
   import { Chart } from "chart.js/auto";  
   // ref will return object with key name as "value"
   const weights =ref([]);
@@ -70,7 +70,9 @@ weightChart.value  = new Chart(weightChartEl.value, {
   }, {deep:true})
 
   
-
+onMounted(() => {
+document.querySelector(".wt").style.color = "grey";
+})
   var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 
@@ -78,7 +80,7 @@ weightChart.value  = new Chart(weightChartEl.value, {
 
 <template>
  <main class="p-3 rounded-4">
-  <h1>Weight Tracker</h1>
+  <h1 class="wt">Weight Tracker</h1>
   <div class="current">
     <span class="lead fw-bold fs-3">{{currentWeight.weight}}</span>
     <div>
@@ -113,6 +115,8 @@ weightChart.value  = new Chart(weightChartEl.value, {
  </main>
 </template>
 
-<style lang="scss" scoped>
-
+<style  scoped>
+/* .wt{
+  color: red;
+} */
 </style>
