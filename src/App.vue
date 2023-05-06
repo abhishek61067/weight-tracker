@@ -23,6 +23,7 @@
   }
 
   // watching weights 
+  // watch in vue is equivalent to useEffect in react
   watch(weights, newWeights => {
     const ws = [...newWeights]
 if(weightChart.value){
